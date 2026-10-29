@@ -1,0 +1,28 @@
+/* ===== NAV ===== */
+.nav { display: flex; align-items: center; justify-content: space-between; padding: 0 48px; height: 72px; border-bottom: 1px solid var(--border); background: var(--bg); position: sticky; top: 0; z-index: 50; transition: background-color 0.3s ease, border-color 0.3s ease; }
+.brand { display: flex; align-items: center; gap: 14px; font-family: var(--font-display); font-weight: 700; font-size: 18px; letter-spacing: -0.02em; text-transform: uppercase; }
+.brand-mark { width: 32px; height: 32px; background: var(--orange); color: #000; display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 700; font-family: var(--font-display); }
+.nav-links { display: flex; align-items: center; gap: 8px; }
+.nav-link { 
+  padding: 0 24px; height: 72px; display: inline-flex; align-items: center; color: var(--text-muted); cursor: pointer; font-family: var(--font-body); font-weight: 600; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; background: none; border: none; border-bottom: 2px solid transparent; margin-bottom: -1px; transition: color 0.15s; 
+}
+.nav-link:hover { color: var(--text); }
+.nav-link.active { color: var(--text); border-bottom-color: var(--orange); }
+.nav-right { display: flex; align-items: center; gap: 12px; }
+.status-pill { display: flex; align-items: center; gap: 8px; padding: 8px 14px; border: 1px solid var(--border); font-size: 11px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; font-family: var(--font-mono); transition: border-color 0.3s ease; }
+.status-square { width: 6px; height: 6px; background: var(--green); animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+.info-icon-btn, .theme-toggle-btn {
+  width: 36px; height: 36px;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: transparent; border: 1px solid var(--border-strong);
+  color: var(--text-muted); cursor: pointer;
+  transition: all 0.15s; padding: 0;
+}
+.info-icon-btn { font-family: var(--font-mono); font-size: 15px; font-weight: 700; font-style: italic; }
+.theme-toggle-btn svg { width: 16px; height: 16px; }
+.info-icon-btn:hover, .theme-toggle-btn:hover { background: var(--orange); border-color: var(--orange); color: #000; }
+
+/* Amber square when the dashboard is showing demo data */
+.status-pill.demo .status-square { background: var(--amber); }

@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>BMITADBLOCKER — DNS Filtering on NextDNS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Styles: one file per part of the UI -->
+<link rel="stylesheet" href="css/theme.css" />
+<link rel="stylesheet" href="css/base.css" />
+<link rel="stylesheet" href="css/nav.css" />
+<link rel="stylesheet" href="css/layout.css" />
+<link rel="stylesheet" href="css/setup.css" />
+<link rel="stylesheet" href="css/dashboard.css" />
+<link rel="stylesheet" href="css/extension.css" />
+<link rel="stylesheet" href="css/about.css" />
+</head>
+<body>
+
+<nav class="nav">
+  <div class="brand"><div class="brand-mark">B</div>BMITADBLOCKER</div>
+  <div class="nav-links">
+    <button class="nav-link active" data-view="setup">Setup</button>
+    <button class="nav-link" data-view="dashboard">Dashboard</button>
+    <button class="nav-link" data-view="extension">Extension</button>
+  </div>
+  <div class="nav-right">
+    <div class="status-pill demo" id="status-pill" title="Where the dashboard data comes from"><span class="status-square"></span> <span id="status-text">Connecting…</span></div>
+    
+    <!-- THEME TOGGLE BUTTON -->
+    <button class="theme-toggle-btn" id="theme-toggle" title="Toggle Light/Dark Theme" aria-label="Toggle Theme">
+      <svg id="theme-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+      </svg>
+      <svg id="theme-icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter" style="display: none;">
+        <circle cx="12" cy="12" r="5"></circle>
+        <line x1="12" y1="1" x2="12" y2="3"></line>
+        <line x1="12" y1="21" x2="12" y2="23"></line>
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+        <line x1="1" y1="12" x2="3" y2="12"></line>
+        <line x1="21" y1="12" x2="23" y2="12"></line>
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+      </svg>
+    </button>
+
+    <button class="info-icon-btn" id="open-info" title="About the project" aria-label="Info">i</button>
+  </div>
+</nav>
+
+<div class="container">
+
+  <!-- ================= SETUP ================= -->
+  <div class="view active" id="view-setup">
+    <div class="page-eyebrow">Step 01</div>
+    <h1 class="page-title">Protect your phone in 60 seconds</h1>
+    <p class="page-sub">Your profile runs on NextDNS. Choose your platform below and follow the steps.</p>
+
+    <div class="setup-grid">
+      <div class="card">
+        <div class="profile-tag"><span class="status-square"></span> Profile Active — <span id="profile-id-label">…</span></div>
+        <div class="card-title">Your DNS connection details</div>
+        <div class="card-desc">These point to your NextDNS profile. Works on Wi-Fi and cellular.</div>
+
+        <div class="mode-toggle">
+          <button class="mode-btn active" data-mode="android">Android</button>
+          <button class="mode-btn" data-mode="ios">iOS / macOS</button>
+        </div>
+
+        <div class="mode-panel active" id="mode-android">
+          <div class="host-label">DNS-over-TLS (DoT) hostname</div>
+          <div class="host-box">
+            <span class="host-value" id="dot-host">…</span>
+            <button class="copy-btn" id="copy-host">Copy</button>
+          </div>
+          <div class="steps">
+            <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Settings → Network & Internet → Private DNS</strong><span>Android 9 or newer.</span></div></div>
+            <div class="step"><div class="step-num">2</div><div class="step-body"><strong>Select "Private DNS provider hostname"</strong><span>Do not choose Automatic — it bypasses our filter.</span></div></div>
+            <div class="step"><div class="step-num">3</div><div class="step-body"><strong>Paste the hostname and save</strong><span>Filtering is now active system-wide.</span></div></div>
+          </div>
+        </div>
+
+        <div class="mode-panel" id="mode-ios">
+          <div class="host-label">DNS-over-HTTPS (DoH) URL</div>
+          <div class="host-box">
+            <span class="host-value small" id="doh-url">…</span>
+            <button class="copy-btn" id="copy-doh">Copy</button>
+          </div>
+          <div class="steps">
+            <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Download the configuration profile</strong><span>Tap the button below on your iPhone.</span></div></div>
+            <div class="step"><div class="step-num">2</div><div class="step-body"><strong>Settings → Profile Downloaded → Install</strong><span>Approve the DNS configuration.</span></div></div>
+            <div class="step"><div class="step-num">3</div><div class="step-body"><strong>Verify under Settings → General → VPN & Device Management</strong><span>Filtering is active on cellular and Wi-Fi.</span></div></div>
+          </div>
+          <a class="install-btn install-btn--secondary" id="download-profile" href="/mobileconfig">⬇ Download .mobileconfig</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title" style="text-align:center;">Scan to configure</div>
+        <div class="card-desc" style="text-align:center;">QR encodes your hostname for quick setup.</div>
+        <div class="qr-wrap">
+          <img id="qr-img" alt="QR code" />
+          <div class="qr-label" id="qr-label-text">…</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= DASHBOARD ================= -->
+  <div class="view" id="view-dashboard">
+    <div class="page-eyebrow">Step 02</div>
+    <h1 class="page-title">Live dashboard</h1>
+    <p class="page-sub">Real-time DNS query activity for profile <code id="dash-profile">…</code>, pulled live from the NextDNS Analytics API.</p>
+
+    <div class="stats-grid">
+      <div class="stat accent-cyan"><div class="stat-label">Total Queries</div><div class="stat-value" id="stat-total">0</div><div class="stat-delta">LAST 24 HOURS</div></div>
+      <div class="stat accent-red"><div class="stat-label">Blocked</div><div class="stat-value" id="stat-blocked">0</div><div class="stat-delta" id="stat-block-rate">0% BLOCK RATE</div></div>
+      <div class="stat accent-green"><div class="stat-label">Allowed</div><div class="stat-value" id="stat-allowed">0</div><div class="stat-delta">LEGITIMATE TRAFFIC</div></div>
+      <div class="stat accent-purple"><div class="stat-label">Last Seen</div><div class="stat-value" id="stat-lastseen">—</div><div class="stat-delta">LATEST QUERY</div></div>
+    </div>
+
+    <div class="card clients-card">
+      <div class="card-title">Connected clients</div>
+      <div class="card-desc">Devices seen by this profile in the last 24 hours. Online = a query in the last 5 minutes.</div>
+
+      <div class="clients-summary">
+        <div class="client-meta">Total devices<strong id="clients-total">0</strong></div>
+        <div class="client-meta">Online now<strong class="online" id="clients-online">0</strong></div>
+        <div class="client-meta">Offline<strong id="clients-offline">0</strong></div>
+      </div>
+
+      <table class="clients-table">
+        <thead>
+          <tr>
+            <th>Device</th>
+            <th>IP address</th>
+            <th>Queries</th>
+            <th>Last seen</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody id="clients-body"></tbody>
+      </table>
+    </div>
+
+    <div class="card chart-card">
+      <div class="card-title">Queries over the last 24 hours</div>
+      <div class="card-desc">Total vs blocked, hourly buckets.</div>
+      <div class="chart-container">
+        <div class="chart-grid">
+          <div class="chart-grid-line"></div><div class="chart-grid-line"></div>
+          <div class="chart-grid-line"></div><div class="chart-grid-line"></div>
+        </div>
+        <div class="chart" id="chart"></div>
+      </div>
+      <div class="chart-legend">
+        <div class="legend-item"><div class="legend-swatch" style="background:var(--orange);"></div> Allowed</div>
+        <div class="legend-item"><div class="legend-swatch" style="background:var(--red);"></div> Blocked</div>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <div class="card">
+        <div class="card-title">Top blocked domains</div>
+        <div class="card-desc">Most frequently blocked destinations.</div>
+        <div id="top-domains"></div>
+      </div>
+      <div class="card">
+        <div class="card-title">Live query log</div>
+        <div class="card-desc">Newest first. Refreshes every 5 seconds from NextDNS logs.</div>
+        <div class="log-scroll">
+          <table>
+            <thead><tr><th>Domain</th><th>Status</th><th>Time</th></tr></thead>
+            <tbody id="log-body"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= EXTENSION ================= -->
+  <div class="view" id="view-extension">
+    <div class="page-eyebrow">Step 03</div>
+    <h1 class="page-title">Browser extension</h1>
+    <p class="page-sub">The DNS layer blocks domains. The extension handles everything DNS can't see.</p>
+
+    <div class="card">
+      <div class="ext-hero">
+        <div>
+          <div class="ext-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            </svg>
+          </div>
+          <div class="ext-title">BMITADBLOCKER Shield for Firefox</div>
+          <div class="ext-desc">Manifest V3 extension featuring 119,000+ network rules, cosmetic filtering, deep YouTube ad removal via page-world injection, and SponsorBlock integration.</div>
+          <a class="install-btn" href="https://addons.mozilla.org/en-US/firefox/" target="_blank">⬇ Install for Firefox</a>
+        </div>
+        <div class="qr-wrap">
+          <img id="qr-ext" alt="Extension QR" src="https://api.qrserver.com/v1/create-qr-code/?size=440x440&data=https://addons.mozilla.org/en-US/firefox/&color=000000&bgcolor=ffffff" />
+          <div class="qr-label" style="max-width: 320px;">SCAN WITH YOUR PHONE TO INSTALL</div>
+        </div>
+      </div>
+
+      <div class="layer-list">
+        <div class="layer"><span class="layer-badge dns">DNS</span><div class="layer-text"><strong>Network-level blocking (NextDNS)</strong>Blocks ad and tracker domains for every app on the device. Works on Wi-Fi and cellular.</div></div>
+        <div class="layer"><span class="layer-badge ext">EXT</span><div class="layer-text"><strong>In-browser filtering</strong>Hides empty ad boxes, blocks first-party ads, and intercepts YouTube player data before playback.</div></div>
+        <div class="layer"><span class="layer-badge yt">YT</span><div class="layer-text"><strong>YouTube on Android</strong>DNS and MV3 extensions cannot reliably block YouTube video ads. Use a patched client like <strong style="display:inline; color:var(--text);">Morphe</strong> for that layer.</div></div>
+      </div>
+
+      <div class="note-box">
+        <strong>Honest limitation:</strong> YouTube video ads are served from the same domain as the video content itself. No DNS blocker or standard extension can reliably block them. We say "blocks most ads and trackers" — never "blocks all ads."
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ================= INFO FULL-SCREEN ================= -->
+<div class="modal-overlay" id="info-modal">
+  <div class="modal-header">
+    <div class="modal-header-left">
+      <button class="modal-back-btn" id="close-info" aria-label="Back">←</button>
+      <span class="modal-eyebrow">About the project</span>
+    </div>
+    <div class="modal-header-right">
+      <div class="status-pill"><span class="status-square"></span> BMITADBLOCKER</div>
+      <button class="modal-close" id="close-info-2" aria-label="Close">✕</button>
+    </div>
+  </div>
+
+  <div class="modal-inner">
+
+    <div class="modal-hero">
+      <div class="modal-eyebrow-lg">Project Overview</div>
+      <h2 class="modal-title">BMITADBLOCKER</h2>
+      <p class="modal-sub">A DNS FILTERING PLATFORM BUILT ON THE NEXTDNS API, WITH LIVE QUERY ANALYTICS, PER-DEVICE CLIENT TRACKING, AND A COMPANION BROWSER EXTENSION.</p>
+    </div>
+
+    <!-- INSTITUTION -->
+    <div class="info-section">
+      <div class="info-section-label">Institution</div>
+      <div class="institution-card">
+        <div class="institution-name">BRAHMDEVDADA MANE INSTITUTE OF TECHNOLOGY</div>
+        <div class="institution-dept">DEPARTMENT OF ELECTRONICS AND TELECOMMUNICATION ENGINEERING</div>
+      </div>
+    </div>
+
+    <!-- BUILT BY -->
+    <div class="info-section">
+      <div class="info-section-label">Built by</div>
+      <div class="team-grid">
+        <div class="member">
+          <div class="member-index">01 / DEVELOPER</div>
+          <div class="member-name">LOMAN SHAIKH</div>
+          <div class="member-role">FULL-STACK & API INTEGRATION</div>
+        </div>
+        <div class="member">
+          <div class="member-index">02 / DEVELOPER</div>
+          <div class="member-name">LAVANYA YERGUNTLA</div>
+          <div class="member-role">FRONTEND & DASHBOARD UI</div>
+        </div>
+        <div class="member">
+          <div class="member-index">03 / DEVELOPER</div>
+          <div class="member-name">ARVIND KORE</div>
+          <div class="member-role">BROWSER EXTENSION & TESTING</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FACULTY -->
+    <div class="info-section">
+      <div class="info-section-label">Faculty & Guidance</div>
+      <div class="guide-grid">
+        <div class="guide-card">
+          <div class="guide-label">Project Guide</div>
+          <div class="guide-name">DR. G. M. KOSGIKAR</div>
+        </div>
+        <div class="guide-card">
+          <div class="guide-label">Head of Department</div>
+          <div class="guide-name">IR. DR. KAZI K. S.</div>
+        </div>
+        <div class="guide-card">
+          <div class="guide-label">Project Coordinator</div>
+          <div class="guide-name">PROF. PATIL J. M.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ABOUT -->
+    <div class="info-section">
+      <div class="info-section-label">About the project</div>
+      <div class="about-card">
+        <p class="about-text">
+          <strong>BMITADBLOCKER</strong> IS A DNS FILTERING PLATFORM THAT BLOCKS ADS AND TRACKERS ACROSS EVERY APP ON A DEVICE — NOT JUST INSIDE THE BROWSER. IT USES THE <strong>NEXTDNS</strong> RESOLVER AND ANALYTICS API, PROXIED SECURELY THROUGH <strong>CLOUDFLARE PAGES FUNCTIONS</strong>, AND EXPOSES A CLEAN, REAL-TIME DASHBOARD FOR QUERY STATISTICS, BLOCKED DOMAIN RANKINGS, AND PER-CLIENT CONNECTION STATUS.
+        </p>
+        <p class="about-text">
+          THE PLATFORM PAIRS TWO COMPLEMENTARY LAYERS: <strong>NETWORK-LEVEL DNS BLOCKING</strong> FOR SYSTEM-WIDE PROTECTION, AND A <strong>MANIFEST V3 BROWSER EXTENSION</strong> FOR IN-PAGE COSMETIC FILTERING AND FIRST-PARTY AD BLOCKING THAT DNS ALONE CANNOT CATCH.
+        </p>
+        <div class="stack-list">
+          <span class="stack-tag">NEXTDNS</span>
+          <span class="stack-tag">NEXTDNS API</span>
+          <span class="stack-tag">VANILLA JS</span>
+          <span class="stack-tag">CLOUDFLARE PAGES</span>
+          <span class="stack-tag">PAGES FUNCTIONS</span>
+          <span class="stack-tag neutral">MANIFEST V3</span>
+          <span class="stack-tag neutral">FIREFOX</span>
+          <span class="stack-tag neutral">DOH / DOT</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Scripts: js/main.js is the entry point, it imports everything else -->
+<script type="module" src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,4 @@
+# Copy this file to ".dev.vars" for local testing (npm run dev). Never commit ".dev.vars".
+# On Cloudflare, set the same two names under Pages -> Settings -> Variables and Secrets.
+NEXTDNS_API_KEY=paste-your-api-key-here
+NEXTDNS_PROFILE_ID=abc123
