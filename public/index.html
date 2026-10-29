@@ -1,36 +1,40 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>BMITADBLOCKER — DNS Filtering on NextDNS</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BMITADBLOCKER — DNS Filtering on NextDNS</title>
 
-<!-- Styles: one file per part of the UI -->
-<link rel="stylesheet" href="css/theme.css" />
-<link rel="stylesheet" href="css/base.css" />
-<link rel="stylesheet" href="css/nav.css" />
-<link rel="stylesheet" href="css/layout.css" />
-<link rel="stylesheet" href="css/setup.css" />
-<link rel="stylesheet" href="css/dashboard.css" />
-<link rel="stylesheet" href="css/extension.css" />
-<link rel="stylesheet" href="css/about.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" />
+
+  <link rel="stylesheet" href="css/theme.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/nav.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/setup.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+  <link rel="stylesheet" href="css/extension.css" />
+  <link rel="stylesheet" href="css/about.css" />
 </head>
 <body>
 
+<!-- ===== TOP NAV ===== -->
 <nav class="nav">
   <div class="brand"><div class="brand-mark">B</div>BMITADBLOCKER</div>
+
   <div class="nav-links">
     <button class="nav-link active" data-view="setup">Setup</button>
     <button class="nav-link" data-view="dashboard">Dashboard</button>
     <button class="nav-link" data-view="extension">Extension</button>
   </div>
+
   <div class="nav-right">
-    <div class="status-pill demo" id="status-pill" title="Where the dashboard data comes from"><span class="status-square"></span> <span id="status-text">Connecting…</span></div>
-    
-    <!-- THEME TOGGLE BUTTON -->
+    <div class="status-pill demo" id="status-pill" title="Where the dashboard data comes from">
+      <span class="status-square"></span> <span id="status-text">Connecting…</span>
+    </div>
+
     <button class="theme-toggle-btn" id="theme-toggle" title="Toggle Light/Dark Theme" aria-label="Toggle Theme">
       <svg id="theme-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter">
         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
@@ -54,8 +58,8 @@
 
 <div class="container">
 
-  <!-- ================= SETUP ================= -->
-  <div class="view active" id="view-setup">
+  <!-- ===== SETUP ===== -->
+  <section class="view active" id="view-setup">
     <div class="page-eyebrow">Step 01</div>
     <h1 class="page-title">Protect your phone in 60 seconds</h1>
     <p class="page-sub">Your profile runs on NextDNS. Choose your platform below and follow the steps.</p>
@@ -78,9 +82,18 @@
             <button class="copy-btn" id="copy-host">Copy</button>
           </div>
           <div class="steps">
-            <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Settings → Network & Internet → Private DNS</strong><span>Android 9 or newer.</span></div></div>
-            <div class="step"><div class="step-num">2</div><div class="step-body"><strong>Select "Private DNS provider hostname"</strong><span>Do not choose Automatic — it bypasses our filter.</span></div></div>
-            <div class="step"><div class="step-num">3</div><div class="step-body"><strong>Paste the hostname and save</strong><span>Filtering is now active system-wide.</span></div></div>
+            <div class="step">
+              <div class="step-num">1</div>
+              <div class="step-body"><strong>Settings → Network & Internet → Private DNS</strong><span>Android 9 or newer.</span></div>
+            </div>
+            <div class="step">
+              <div class="step-num">2</div>
+              <div class="step-body"><strong>Select "Private DNS provider hostname"</strong><span>Do not choose Automatic — it bypasses our filter.</span></div>
+            </div>
+            <div class="step">
+              <div class="step-num">3</div>
+              <div class="step-body"><strong>Paste the hostname and save</strong><span>Filtering is now active system-wide.</span></div>
+            </div>
           </div>
         </div>
 
@@ -91,36 +104,61 @@
             <button class="copy-btn" id="copy-doh">Copy</button>
           </div>
           <div class="steps">
-            <div class="step"><div class="step-num">1</div><div class="step-body"><strong>Download the configuration profile</strong><span>Tap the button below on your iPhone.</span></div></div>
-            <div class="step"><div class="step-num">2</div><div class="step-body"><strong>Settings → Profile Downloaded → Install</strong><span>Approve the DNS configuration.</span></div></div>
-            <div class="step"><div class="step-num">3</div><div class="step-body"><strong>Verify under Settings → General → VPN & Device Management</strong><span>Filtering is active on cellular and Wi-Fi.</span></div></div>
+            <div class="step">
+              <div class="step-num">1</div>
+              <div class="step-body"><strong>Download the configuration profile</strong><span>Tap the button below on your iPhone.</span></div>
+            </div>
+            <div class="step">
+              <div class="step-num">2</div>
+              <div class="step-body"><strong>Settings → Profile Downloaded → Install</strong><span>Approve the DNS configuration.</span></div>
+            </div>
+            <div class="step">
+              <div class="step-num">3</div>
+              <div class="step-body"><strong>Verify under Settings → General → VPN & Device Management</strong><span>Filtering is active on cellular and Wi-Fi.</span></div>
+            </div>
           </div>
           <a class="install-btn install-btn--secondary" id="download-profile" href="/mobileconfig">⬇ Download .mobileconfig</a>
         </div>
       </div>
 
       <div class="card">
-        <div class="card-title" style="text-align:center;">Scan to configure</div>
-        <div class="card-desc" style="text-align:center;">QR encodes your hostname for quick setup.</div>
+        <div class="card-title text-center">Scan to configure</div>
+        <div class="card-desc text-center">QR encodes your hostname for quick setup.</div>
         <div class="qr-wrap">
           <img id="qr-img" alt="QR code" />
           <div class="qr-label" id="qr-label-text">…</div>
         </div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <!-- ================= DASHBOARD ================= -->
-  <div class="view" id="view-dashboard">
+  <!-- ===== DASHBOARD ===== -->
+  <section class="view" id="view-dashboard">
     <div class="page-eyebrow">Step 02</div>
     <h1 class="page-title">Live dashboard</h1>
     <p class="page-sub">Real-time DNS query activity for profile <code id="dash-profile">…</code>, pulled live from the NextDNS Analytics API.</p>
 
     <div class="stats-grid">
-      <div class="stat accent-cyan"><div class="stat-label">Total Queries</div><div class="stat-value" id="stat-total">0</div><div class="stat-delta">LAST 24 HOURS</div></div>
-      <div class="stat accent-red"><div class="stat-label">Blocked</div><div class="stat-value" id="stat-blocked">0</div><div class="stat-delta" id="stat-block-rate">0% BLOCK RATE</div></div>
-      <div class="stat accent-green"><div class="stat-label">Allowed</div><div class="stat-value" id="stat-allowed">0</div><div class="stat-delta">LEGITIMATE TRAFFIC</div></div>
-      <div class="stat accent-purple"><div class="stat-label">Last Seen</div><div class="stat-value" id="stat-lastseen">—</div><div class="stat-delta">LATEST QUERY</div></div>
+      <div class="stat accent-cyan">
+        <div class="stat-label">Total Queries</div>
+        <div class="stat-value" id="stat-total">0</div>
+        <div class="stat-delta">Last 24 hours</div>
+      </div>
+      <div class="stat accent-red">
+        <div class="stat-label">Blocked</div>
+        <div class="stat-value" id="stat-blocked">0</div>
+        <div class="stat-delta" id="stat-block-rate">0% block rate</div>
+      </div>
+      <div class="stat accent-green">
+        <div class="stat-label">Allowed</div>
+        <div class="stat-value" id="stat-allowed">0</div>
+        <div class="stat-delta">Legitimate traffic</div>
+      </div>
+      <div class="stat accent-purple">
+        <div class="stat-label">Last Seen</div>
+        <div class="stat-value" id="stat-lastseen">—</div>
+        <div class="stat-delta">Latest query</div>
+      </div>
     </div>
 
     <div class="card clients-card">
@@ -152,14 +190,16 @@
       <div class="card-desc">Total vs blocked, hourly buckets.</div>
       <div class="chart-container">
         <div class="chart-grid">
-          <div class="chart-grid-line"></div><div class="chart-grid-line"></div>
-          <div class="chart-grid-line"></div><div class="chart-grid-line"></div>
+          <div class="chart-grid-line"></div>
+          <div class="chart-grid-line"></div>
+          <div class="chart-grid-line"></div>
+          <div class="chart-grid-line"></div>
         </div>
         <div class="chart" id="chart"></div>
       </div>
       <div class="chart-legend">
-        <div class="legend-item"><div class="legend-swatch" style="background:var(--orange);"></div> Allowed</div>
-        <div class="legend-item"><div class="legend-swatch" style="background:var(--red);"></div> Blocked</div>
+        <div class="legend-item"><span class="legend-swatch" style="background: var(--orange);"></span> Allowed</div>
+        <div class="legend-item"><span class="legend-swatch" style="background: var(--red);"></span> Blocked</div>
       </div>
     </div>
 
@@ -180,10 +220,10 @@
         </div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <!-- ================= EXTENSION ================= -->
-  <div class="view" id="view-extension">
+  <!-- ===== EXTENSION ===== -->
+  <section class="view" id="view-extension">
     <div class="page-eyebrow">Step 03</div>
     <h1 class="page-title">Browser extension</h1>
     <p class="page-sub">The DNS layer blocks domains. The extension handles everything DNS can't see.</p>
@@ -198,31 +238,41 @@
           </div>
           <div class="ext-title">BMITADBLOCKER Shield for Firefox</div>
           <div class="ext-desc">Manifest V3 extension featuring 119,000+ network rules, cosmetic filtering, deep YouTube ad removal via page-world injection, and SponsorBlock integration.</div>
-          <a class="install-btn" href="https://addons.mozilla.org/en-US/firefox/" target="_blank">⬇ Install for Firefox</a>
+          <a class="install-btn" href="https://addons.mozilla.org/en-US/firefox/" target="_blank" rel="noopener">⬇ Install for Firefox</a>
         </div>
         <div class="qr-wrap">
           <img id="qr-ext" alt="Extension QR" src="https://api.qrserver.com/v1/create-qr-code/?size=440x440&data=https://addons.mozilla.org/en-US/firefox/&color=000000&bgcolor=ffffff" />
-          <div class="qr-label" style="max-width: 320px;">SCAN WITH YOUR PHONE TO INSTALL</div>
+          <div class="qr-label qr-label--narrow">Scan with your phone to install</div>
         </div>
       </div>
 
       <div class="layer-list">
-        <div class="layer"><span class="layer-badge dns">DNS</span><div class="layer-text"><strong>Network-level blocking (NextDNS)</strong>Blocks ad and tracker domains for every app on the device. Works on Wi-Fi and cellular.</div></div>
-        <div class="layer"><span class="layer-badge ext">EXT</span><div class="layer-text"><strong>In-browser filtering</strong>Hides empty ad boxes, blocks first-party ads, and intercepts YouTube player data before playback.</div></div>
-        <div class="layer"><span class="layer-badge yt">YT</span><div class="layer-text"><strong>YouTube on Android</strong>DNS and MV3 extensions cannot reliably block YouTube video ads. Use a patched client like <strong style="display:inline; color:var(--text);">Morphe</strong> for that layer.</div></div>
+        <div class="layer">
+          <span class="layer-badge dns">DNS</span>
+          <div class="layer-text"><strong>Network-level blocking (NextDNS)</strong>Blocks ad and tracker domains for every app on the device. Works on Wi-Fi and cellular.</div>
+        </div>
+        <div class="layer">
+          <span class="layer-badge ext">EXT</span>
+          <div class="layer-text"><strong>In-browser filtering</strong>Hides empty ad boxes, blocks first-party ads, and intercepts YouTube player data before playback.</div>
+        </div>
+        <div class="layer">
+          <span class="layer-badge yt">YT</span>
+          <div class="layer-text"><strong>YouTube on Android</strong>DNS and MV3 extensions cannot reliably block YouTube video ads. Use a patched client like <strong class="inline-strong">Morphe</strong> for that layer.</div>
+        </div>
       </div>
 
       <div class="note-box">
         <strong>Honest limitation:</strong> YouTube video ads are served from the same domain as the video content itself. No DNS blocker or standard extension can reliably block them. We say "blocks most ads and trackers" — never "blocks all ads."
       </div>
     </div>
-  </div>
+  </section>
 
 </div>
 
-<!-- ================= INFO FULL-SCREEN ================= -->
-<div class="modal-overlay" id="info-modal">
-  <div class="modal-header">
+<!-- ===== ABOUT OVERLAY ===== -->
+<div class="modal-overlay" id="info-modal" role="dialog" aria-modal="true" aria-label="About the project">
+
+  <header class="modal-header">
     <div class="modal-header-left">
       <button class="modal-back-btn" id="close-info" aria-label="Back">←</button>
       <span class="modal-eyebrow">About the project</span>
@@ -231,93 +281,108 @@
       <div class="status-pill"><span class="status-square"></span> BMITADBLOCKER</div>
       <button class="modal-close" id="close-info-2" aria-label="Close">✕</button>
     </div>
-  </div>
+  </header>
 
   <div class="modal-inner">
 
-    <div class="modal-hero">
+    <section class="modal-hero">
       <div class="modal-eyebrow-lg">Project Overview</div>
       <h2 class="modal-title">BMITADBLOCKER</h2>
-      <p class="modal-sub">A DNS FILTERING PLATFORM BUILT ON THE NEXTDNS API, WITH LIVE QUERY ANALYTICS, PER-DEVICE CLIENT TRACKING, AND A COMPANION BROWSER EXTENSION.</p>
-    </div>
+      <p class="modal-sub">A DNS filtering platform built on the NextDNS API, with live query analytics, per-device client tracking, and a companion browser extension.</p>
+    </section>
 
-    <!-- INSTITUTION -->
-    <div class="info-section">
+    <section class="info-section">
       <div class="info-section-label">Institution</div>
       <div class="institution-card">
-        <div class="institution-name">BRAHMDEVDADA MANE INSTITUTE OF TECHNOLOGY</div>
-        <div class="institution-dept">DEPARTMENT OF ELECTRONICS AND TELECOMMUNICATION ENGINEERING</div>
+        <div class="institution-name">Brahmdevdada Mane Institute of Technology</div>
+        <div class="institution-dept">Department of Electronics and Telecommunication Engineering</div>
       </div>
-    </div>
+    </section>
 
-    <!-- BUILT BY -->
-    <div class="info-section">
+    <section class="info-section">
       <div class="info-section-label">Built by</div>
       <div class="team-grid">
-        <div class="member">
-          <div class="member-index">01 / DEVELOPER</div>
-          <div class="member-name">LOMAN SHAIKH</div>
-          <div class="member-role">FULL-STACK & API INTEGRATION</div>
-        </div>
-        <div class="member">
-          <div class="member-index">02 / DEVELOPER</div>
-          <div class="member-name">LAVANYA YERGUNTLA</div>
-          <div class="member-role">FRONTEND & DASHBOARD UI</div>
-        </div>
-        <div class="member">
-          <div class="member-index">03 / DEVELOPER</div>
-          <div class="member-name">ARVIND KORE</div>
-          <div class="member-role">BROWSER EXTENSION & TESTING</div>
-        </div>
+        <article class="member">
+          <div class="member-index">01 / Developer</div>
+          <div class="member-name">Loman Shaikh</div>
+          <div class="member-role">Full-stack & API integration</div>
+        </article>
+        <article class="member">
+          <div class="member-index">02 / Developer</div>
+          <div class="member-name">Lavanya Yerguntla</div>
+          <div class="member-role">Frontend & dashboard UI</div>
+        </article>
+        <article class="member">
+          <div class="member-index">03 / Developer</div>
+          <div class="member-name">Arvind Kore</div>
+          <div class="member-role">Browser extension & testing</div>
+        </article>
       </div>
-    </div>
+    </section>
 
-    <!-- FACULTY -->
-    <div class="info-section">
+    <section class="info-section">
       <div class="info-section-label">Faculty & Guidance</div>
       <div class="guide-grid">
         <div class="guide-card">
           <div class="guide-label">Project Guide</div>
-          <div class="guide-name">DR. G. M. KOSGIKAR</div>
+          <div class="guide-name">Dr. G. M. Kosgikar</div>
         </div>
         <div class="guide-card">
           <div class="guide-label">Head of Department</div>
-          <div class="guide-name">IR. DR. KAZI K. S.</div>
+          <div class="guide-name">Ir. Dr. Kazi K. S.</div>
         </div>
         <div class="guide-card">
           <div class="guide-label">Project Coordinator</div>
-          <div class="guide-name">PROF. PATIL J. M.</div>
+          <div class="guide-name">Prof. Patil J. M.</div>
         </div>
       </div>
-    </div>
+    </section>
 
-    <!-- ABOUT -->
-    <div class="info-section">
+    <section class="info-section">
+      <div class="info-section-label">Feedback review</div>
+      <div class="about-card feedback-card">
+        <div class="feedback-reviewer">Taken from Prof. Vishal Gurav</div>
+
+        <div class="feedback-item">
+          <div class="feedback-point">Deploy as a website</div>
+          <p class="about-text">Advised deploying the project as a website, a more advanced and higher-level solution than running it on a Raspberry Pi.</p>
+        </div>
+        <div class="feedback-item">
+          <div class="feedback-point">Remote access</div>
+          <p class="about-text">Encouraged us to build a remote access solution, so the filter keeps working outside the home or college network.</p>
+        </div>
+        <div class="feedback-item">
+          <div class="feedback-point">Native domain blocking</div>
+          <p class="about-text">Suggested blocking domains natively, in the same way as the commercial AdGuard DNS product.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="info-section">
       <div class="info-section-label">About the project</div>
       <div class="about-card">
         <p class="about-text">
-          <strong>BMITADBLOCKER</strong> IS A DNS FILTERING PLATFORM THAT BLOCKS ADS AND TRACKERS ACROSS EVERY APP ON A DEVICE — NOT JUST INSIDE THE BROWSER. IT USES THE <strong>NEXTDNS</strong> RESOLVER AND ANALYTICS API, PROXIED SECURELY THROUGH <strong>CLOUDFLARE PAGES FUNCTIONS</strong>, AND EXPOSES A CLEAN, REAL-TIME DASHBOARD FOR QUERY STATISTICS, BLOCKED DOMAIN RANKINGS, AND PER-CLIENT CONNECTION STATUS.
+          <strong>BMITADBLOCKER</strong> is a DNS filtering platform that blocks ads and trackers across every app on a device, not just inside the browser. It uses the <strong>NextDNS</strong> resolver and analytics API, proxied securely through <strong>Cloudflare Pages Functions</strong>, and exposes a clean, real-time dashboard for query statistics, blocked domain rankings, and per-client connection status.
         </p>
         <p class="about-text">
-          THE PLATFORM PAIRS TWO COMPLEMENTARY LAYERS: <strong>NETWORK-LEVEL DNS BLOCKING</strong> FOR SYSTEM-WIDE PROTECTION, AND A <strong>MANIFEST V3 BROWSER EXTENSION</strong> FOR IN-PAGE COSMETIC FILTERING AND FIRST-PARTY AD BLOCKING THAT DNS ALONE CANNOT CATCH.
+          The platform pairs two complementary layers: <strong>network-level DNS blocking</strong> for system-wide protection, and a <strong>Manifest V3 browser extension</strong> for in-page cosmetic filtering and first-party ad blocking that DNS alone cannot catch.
         </p>
         <div class="stack-list">
-          <span class="stack-tag">NEXTDNS</span>
-          <span class="stack-tag">NEXTDNS API</span>
-          <span class="stack-tag">VANILLA JS</span>
-          <span class="stack-tag">CLOUDFLARE PAGES</span>
-          <span class="stack-tag">PAGES FUNCTIONS</span>
-          <span class="stack-tag neutral">MANIFEST V3</span>
-          <span class="stack-tag neutral">FIREFOX</span>
-          <span class="stack-tag neutral">DOH / DOT</span>
+          <span class="stack-tag">NextDNS</span>
+          <span class="stack-tag">NextDNS API</span>
+          <span class="stack-tag">Vanilla JS</span>
+          <span class="stack-tag">Cloudflare Pages</span>
+          <span class="stack-tag">Pages Functions</span>
+          <span class="stack-tag neutral">Manifest V3</span>
+          <span class="stack-tag neutral">Firefox</span>
+          <span class="stack-tag neutral">DoH / DoT</span>
         </div>
       </div>
-    </div>
+    </section>
 
   </div>
 </div>
 
-<!-- Scripts: js/main.js is the entry point, it imports everything else -->
 <script type="module" src="js/main.js"></script>
 </body>
 </html>
